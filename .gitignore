@@ -1,0 +1,29 @@
+# Compiled Object files
+*.o
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Libraries
+*.lib
+*.a
+
+# Shared objects
+*.so
+*.so.*
+
+# Vim
+#~
+*.swp
+*.swo
+
+# Might include cscope.out or just temporary output files
+*.out
+
+# Any temporary files
+*.tmp
+
+# This projects executable directory
+bin/
+
