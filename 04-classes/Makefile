@@ -4,6 +4,7 @@ TARGETNAMES = \
 	class \
 	struct \
 	const-safe \
+	constructor \
 
 -include ../project.mak
 
@@ -15,4 +16,8 @@ $(BLDDIR)/struct: struct.cpp
 
 $(BLDDIR)/const-safe: const-safe.cpp
 	$(CXX) $(CXXFLAGS) -o $@ $^
+
+$(BLDDIR)/constructor: constructor.cpp
+	$(CXX) $(CXXFLAGS) -o $@ $^
+
 
