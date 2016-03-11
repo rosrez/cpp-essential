@@ -16,6 +16,9 @@ $(TARGETS): | $(BLDDIR)
 $(BLDDIR):
 	mkdir -p $(BLDDIR)
 
+$(BLDDIR)/%: %.o
+	$(LINK.cpp) $^ -o $@
+
 # Include directories
 INCLUDE_DIRS := ../include
 INCLUDES = $(addprefix -I, $(INCLUDE_DIRS))
