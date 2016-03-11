@@ -10,6 +10,10 @@ TARGETNAMES = \
 	this \
 	overload-op \
 	overload-func \
+	overload-conv \
+	newdelete \
+	exceptions \
+	functor \
 
 -include ../project.mak
 
@@ -39,3 +43,15 @@ $(BLDDIR)/overload-op: overload-op.o
 
 $(BLDDIR)/overload-func: overload-func.o
 	$(LINK.cpp) $^ -o $@ 
+
+$(BLDDIR)/overload-conv: overload-conv.o
+	$(LINK.cpp) $^ -o $@
+
+$(BLDDIR)/newdelete: newdelete.o
+	$(LINK.cpp) $^ -o $@ 
+
+$(BLDDIR)/exceptions: exceptions.o
+	$(LINK.cpp) $^ -o $@
+
+$(BLDDIR)/functor: functor.o
+	$(LINK.cpp) $^ -o $@

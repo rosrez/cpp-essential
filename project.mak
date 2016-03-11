@@ -20,17 +20,9 @@ $(BLDDIR):
 INCLUDE_DIRS := ../include
 INCLUDES = $(addprefix -I, $(INCLUDE_DIRS))
 
-# STD ?= 11
-
-ifeq "$(STD)" "11"
-     CXXFLAGS += -std=gnu++11
-else ifeq "$(STD)" "98"
-     CXXFLAGS += -std=gnu++98
-else ifeq "$(STD)" "c11"
-     CXXFLAGS += -std=c++11
-else ifeq "$(STD)" "c98"
-     CXXFLAGS += -std=c++98
-endif
+# Default to GNU variety of C++ 11
+STD ?= gnu++11
+CXXFLAGS += -std=$(STD)
 
 # Compile/link flags
 CXXFLAGS += -g -Wall 
