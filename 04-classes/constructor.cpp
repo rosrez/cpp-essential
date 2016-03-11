@@ -14,9 +14,9 @@ const string clone_prefix = "clone-";
 // or destructor, it's best to provide all three of them.
 
 class Animal {
-    string _type ="";
-    string _name = "";
-    string _sound = "";
+    string _type;
+    string _name;
+    string _sound;
 
     // We could have moved the default constructor here, to prevent
     // anyone from using the default constructor, if we needed to.

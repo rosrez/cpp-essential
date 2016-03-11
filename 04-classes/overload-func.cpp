@@ -2,8 +2,6 @@
 #include <iostream>
 using namespace std;
 
-// Note the naming convention: rhs - right hand side operand
-
 class Rational {
     int _n;
     int _d;
@@ -19,7 +17,8 @@ public:
     inline int denominator() const { return _d; };
     // operator overloads
     Rational & operator=(const Rational &);
-    Rational operator+(const Rational &) const;
+    // We take out operator+() and move it outside the class.
+    // Rational operator+(const Rational &) const;
     Rational operator-(const Rational &) const;
     Rational operator*(const Rational &) const;
     Rational operator/(const Rational &) const;
@@ -34,9 +33,13 @@ Rational & Rational::operator=(const Rational & rhs) {
     return *this;   // allows chaining assignments, i.e. a = b = c
 }
 
+// We substituted this class operator with a overloaded + operator
+// for Rational.
+#if 0
 Rational Rational::operator+(const Rational & rhs) const {
     return Rational((_n * rhs._d) + (_d * rhs._n), _d * rhs._d);
 }
+#endif
 
 Rational Rational::operator-(const Rational & rhs) const {
     return Rational((_n * rhs._d) - (_d * rhs._n), _d * rhs._d);
@@ -60,27 +63,17 @@ std::ostream & operator<<(std::ostream & o, const Rational & r) {
     return o << r.numerator() << '/' << r.denominator();
 }
 
+Rational operator+(const Rational & lhs, const Rational & rhs) {
+    return Rational(lhs.numerator() * rhs.denominator() + lhs.denominator() * rhs.numerator(), 
+            lhs.denominator() * rhs.denominator());
+}
+
 int main(int argc, char *argv[]) {
     // Implicit type conversion
     Rational a = 7;     // 7/1
     cout << "a is: " << a << endl;
     // Regular constructor
     Rational b(5,3);    // 5/3
-    cout << "b is: " << b << endl;
-    // Copy constructor
-    Rational c = b;
-    cout << "c is: " << c << endl;
-    // Default constructor
-    Rational d;
-    cout << "d is: " << d << endl;
-    // Assignment operator
-    d = c;
-    cout << "d new value is: " << d << endl;
-    // Reference
-    Rational & e = d;
-    // Assignment to self!
-    d = e;
-    cout << "e is: " << e << endl;
 
     // Arithmetic operations: call operator overload methods
     cout << a << " + " << b << " = " << a + b << endl;
@@ -88,15 +81,9 @@ int main(int argc, char *argv[]) {
     cout << a << " * " << b << " = " << a * b << endl;
     cout << a << " / " << b << " = " << a / b << endl;
 
-    // Since our copy constructor returns 'this', 
-    // the result can be used as the right hand side expression 
-    // for another assignment
-    a = b = c = d;
-    cout << "a now is: " << a << endl;
-    cout << "b now is: " << b << endl;
-    cout << "c now is: " << c << endl;
-    cout << "d now is: " << d << endl;
-
+    // Left-hand operand is not Rationale, just implicitly converted to one
+    // This is why we needed to define the + operator outside the class
+    cout << "operator+ from outside the class:" << endl;
+    cout << 14 << "  " << a << " = " << 14 + a << endl;
     return 0;
-
 }

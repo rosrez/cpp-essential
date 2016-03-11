@@ -9,7 +9,7 @@ namespace prefstring {
 const std::string prefix = "(pref)";
 
 class string {
-    std::string _s = "";    // std:: - to refer to st
+    std::string _s;         // std:: - to refer to std namespace
     string();               // prevent default constructor by making it private
 public:
     string(const std::string & s) : _s(prefix + s) {};

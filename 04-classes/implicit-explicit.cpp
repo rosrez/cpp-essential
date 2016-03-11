@@ -9,7 +9,7 @@ const size_t _maxsize = 1024;
 // s("1234");
 
 class strsize {
-    size_t _size = 0;
+    size_t _size;
 public:
     explicit strsize(const int);     // constructor: size from int
     explicit strsize(const char *);  // constructor: size from c-string
@@ -46,7 +46,7 @@ size_t strsize::size() const {
 // objects of this class are being created. See below for details
 
 class strsize_i {
-    size_t _size = 0;
+    size_t _size;
 public:
     strsize_i(const int);     // constructor: size from int
     strsize_i(const char *);  // constructor: size from c-string

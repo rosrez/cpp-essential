@@ -8,7 +8,8 @@ TARGETNAMES = \
 	implicit-explicit \
 	namespace \
 	this \
-	overload-op
+	overload-op \
+	overload-func \
 
 -include ../project.mak
 
@@ -34,4 +35,7 @@ $(BLDDIR)/this: this.o
 	$(LINK.cpp) $^ -o $@
 
 $(BLDDIR)/overload-op: overload-op.o
+	$(LINK.cpp) $^ -o $@ 
+
+$(BLDDIR)/overload-func: overload-func.o
 	$(LINK.cpp) $^ -o $@ 

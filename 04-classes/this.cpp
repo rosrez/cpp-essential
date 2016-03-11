@@ -2,8 +2,9 @@
 using namespace std;
 
 class Class1 {
-    int i = 0;
+    int i;
 public:
+    Class1() : i(0) {}
     void setvalue(const int value) { i = value; }
     int getvalue() const;
 };
