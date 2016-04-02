@@ -6,6 +6,8 @@ TARGETNAMES = \
 	cout-iostream \
 	file-iostream \
 	iterator \
+	list \
+	pair \
 	# vector
 
 -include ../project.mak
